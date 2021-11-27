@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset=utf-8>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Bitcoin Price Ticker">
+
+        <link rel="icon" href="images/favicon.png" type="image/png">
+
+        <link href="styles/flip.min.css" rel="stylesheet">
+        <link href="styles/style.css" rel="stylesheet">
+
+        <script src="scripts/flip.min.js"></script>
+
+        <title>Terminal ₿</title>
+    </head>
+
+    <body>
+        <main>
+            <div class="tick" data-did-init="setupFlip" hidden>
+                <div data-repeat="true">
+                    <span data-view="flip"></span>
+                </div>
+            </div>
+
+            <img src="images/bitcoin.svg" width="64" height="64" class="loader" alt="Bitcoin">
+
+            <aside>
+                <img src="images/preferences.svg" width="16" height="16" alt="Preferences">
+
+                <fieldset>
+                    <label for="size">Ticker Size</label>
+                    <input type="range" id="size" min="3" max="17" value="10" step="1">
+                </fieldset>
+            </aside>
+        </main>
+
+        <script src="scripts/script.js"></script>
+    </body>
+</html>

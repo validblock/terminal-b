@@ -1,0 +1,3 @@
+## Terminal ₿
+
+Bitcoin Price Ticker
