@@ -1,6 +1,8 @@
 :root {
   --tick-size: 4em;
+  --color-primary: #1a191e;
   --color-secondary: #333232;
+  --color-text: #edebeb;
   --box-shadow: inset 0 1px hsl(0deg 0% 100% / 5%);
   --transition-animation: cubic-bezier(1, .04, .46, .98);
 }
@@ -50,7 +52,7 @@ main {
 }
 
 html {
-  background: no-repeat radial-gradient(at center, var(--color-secondary), #1a191e);
+  background: no-repeat radial-gradient(at center, var(--color-secondary), var(--color-primary));
 }
 
 body {
@@ -67,7 +69,7 @@ aside {
   position: absolute;
   transform: translate3d(calc(100% - 4em), calc(100% - 4em), 0);
   transition: transform 250ms;
-  color: #edebeb;
+  color: var(--color-text);
   padding: 1em 1em 1em 4em;
   border-radius: 1em 0 0 0;
 }
