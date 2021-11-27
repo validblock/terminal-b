@@ -1,6 +1,22 @@
-let ws;
-const pair = 'btceur';
-const tickSizeVariable = '--tick-size';
+function getSearchParam() {
+    if (!window.location.search) {
+        return undefined;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (!params.has('currency')) {
+        return undefined;
+    }
+
+    const currency = params.get('currency').toLowerCase();
+
+    if (!['eur', 'usd', 'gbp'].includes(currency)) {
+        return undefined;
+    }
+
+    return currency;
+}
 
 document.getElementById('size').addEventListener('change', (event) => {
     const size = parseInt(event.target.value, 10).toString();
@@ -10,6 +26,9 @@ document.getElementById('size').addEventListener('change', (event) => {
     setTickSize(size);
 });
 
+let ws;
+const currency = getSearchParam() || 'eur';
+const tickSizeVariable = '--tick-size';
 
 function setTickSize(size) {
     if (!size) {
@@ -32,7 +51,7 @@ function setupTickSize() {
 }
 
 function prepareTitle(price) {
-    const priceFormated = price.toLocaleString('de-DE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+    const priceFormated = price.toLocaleString(undefined, { style: 'currency', currency, maximumFractionDigits: 0 });
 
     document.title = `Terminal ₿ | ${priceFormated}`;
 }
@@ -57,13 +76,13 @@ function initWebsocket(tick) {
     ws.onopen = function() {
         ws.send(JSON.stringify({
             event: 'bts:subscribe',
-            data: { channel: `live_trades_${pair}` }
+            data: { channel: `live_trades_btc${currency}` }
         }));
     };
 
     ws.onmessage = function(evt) {
         const response = JSON.parse(evt.data);
-        const price = parseInt(response.data.price, 10);
+        const price = parseInt(response.data['price'], 10);
 
         switch (response.event) {
             case 'trade': {
