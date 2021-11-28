@@ -113,7 +113,7 @@ main {
 .tick {
   font-size: var(--tick-size);
 }
-@media (max-width: 1023px) {
+@media (max-width: 414px) {
   .tick-flip {
     display: block !important;
     margin: 0.125em 0;
