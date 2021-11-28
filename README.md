@@ -2,6 +2,8 @@
 
 Bitcoin Price Ticker
 
+https://validblock.github.io/terminal-b/
+
 #### Key features
 * Connected to Bitstamp trades
 * Support for multiple currencies e.g. `EUR`, `USD`, `GBP`
